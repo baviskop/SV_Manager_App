@@ -26,19 +26,24 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Lấy lại ViewModel đã được khởi tạo ở Activity
+
         sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
 
-        // Lấy danh sách từ ViewModel
+
         val danhSach = sharedViewModel.danhSachSv
-        val danhSachHienThi = danhSach.map { "${it.maSv} - ${it.name}" }
+        val danhSachHienThi = danhSach.map { "${it.maSv} - ${it.name}" }.toMutableList()
 
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, danhSachHienThi)
         binding.lvStudent.adapter = adapter
 
         binding.btnQuayLai.setOnClickListener {
-            // Quay lại Fragment trước đó
+
             requireActivity().supportFragmentManager.popBackStack()
+        }
+        binding.btnXoaDs.setOnClickListener {
+            // Xóa danh sách trong ViewModel
+            sharedViewModel.danhSachSv.clear()
+            adapter.clear()
         }
     }
 
