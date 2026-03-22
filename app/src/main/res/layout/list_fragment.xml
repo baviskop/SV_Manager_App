@@ -40,14 +40,6 @@
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-        <Button
-            android:id="@+id/btnXoaDs"
-            android:text="Xóa"
-            android:textSize="24.sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="12.dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </LinearLayout>

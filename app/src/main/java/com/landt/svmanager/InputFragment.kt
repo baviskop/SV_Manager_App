@@ -34,15 +34,19 @@ class InputFragment : Fragment() {
             btnThem.setOnClickListener {
                 val maSv = edtMaSv.text.toString()
                 val name = edtName.text.toString()
-                if (maSv.isEmpty() || name.isEmpty()) {
+                val gender = edtGender.text.toString()
+                val age = edtAge.text.toString()
+                if (maSv.isEmpty() || name.isEmpty() || gender.isEmpty() || age.isEmpty()) {
                     Toast.makeText(requireContext(), "Vui lòng nhập đủ thông tin", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 } else {
                     // Thêm vào danh sách trong ViewModel
-                    sharedViewModel.danhSachSv.add(Student(maSv, name))
+                    sharedViewModel.danhSachSv.add(Student(maSv, name, gender, age.toInt()))
                     Toast.makeText(requireContext(), "Đã thêm: $maSv - $name", Toast.LENGTH_SHORT).show()
                     edtMaSv.text.clear()
                     edtName.text.clear()
+                    edtGender.text.clear()
+                    edtAge.text.clear()
                 }
             }
 
